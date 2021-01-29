@@ -2,10 +2,9 @@ channels:
 - conda-forge
 dependencies:
 - pyiron =0.4.0
-- lammps
-- nglview
-- seaborn
-- sqsgenerator
-- phonopy
+- pyiron_atomistics =0.2.2
+- lammps =2020.12.24
+- nglview =2.7.7
+- sqsgenerator =0.0.5
 - sphinxdft =2.7.0
 - papermill
