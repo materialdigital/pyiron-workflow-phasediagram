@@ -2,7 +2,7 @@ channels:
 - conda-forge
 dependencies:
 - pyiron_atomistics =0.2.4
-- lammps =2020.12.24
+- lammps =2021.02.10
 - nglview =2.7.7
 - sqsgenerator =0.0.5
 - sphinxdft =2.7.0
