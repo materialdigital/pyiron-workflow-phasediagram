@@ -1,0 +1,1907 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workshop: Software Tools from Atomistics to Phase Diagrams &#8212; pyiron-workflow-phasediagram</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.37f24b989f4638ff9c27c22dc7559d4f.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo_dark.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">pyiron-workflow-phasediagram</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   pyiron-workflow-phasediagram
+  </a>
+ </li>
+</ul>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://pyiron.org">pyiron</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Workflow_2_Simulation_Codes.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/materialdigital/pyiron-workflow-phasediagram/master?urlpath=lab/tree/Workflow_2_Simulation_Codes.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#day-1-atomistic-simulations-pyiron">
+   Day 1 - Atomistic simulations (pyiron)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reminder">
+   Reminder
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lammps-calculation">
+   LAMMPS Calculation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#molecular-dynamics-calculation">
+     Molecular dynamics calculation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reminder-job-management-in-pyiron">
+     Reminder: Job Management in pyiron
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reminder-plot-calculation-results-using-matplotlib">
+     Reminder: Plot calculation results using matplotlib
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advanced-input-options">
+     Advanced input options
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advanced-output-options">
+     Advanced output options
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accessing-the-original-output-files-of-the-lammps-code">
+     Accessing the original output files of the LAMMPS code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#beyond-a-single-lammps-calculation">
+   Beyond a single LAMMPS calculation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filter-interatomic-potential-database">
+     Filter Interatomic Potential Database
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choose-an-interatmoic-potential">
+     Choose an interatmoic potential
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#job-template">
+       Job Template
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#iterate-over-interatomic-potentials">
+       Iterate over interatomic potentials
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#validate-calculations">
+       Validate calculations
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#analyse-results">
+       Analyse results
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pyiron-table">
+       pyiron table
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="workshop-software-tools-from-atomistics-to-phase-diagrams">
+<h1><a class="reference external" href="https://workshop.materialsgenomefoundation.org">Workshop: Software Tools from Atomistics to Phase Diagrams</a><a class="headerlink" href="#workshop-software-tools-from-atomistics-to-phase-diagrams" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="day-1-atomistic-simulations-pyiron">
+<h2>Day 1 - Atomistic simulations (<a class="reference external" href="https://pyiron.org">pyiron</a>)<a class="headerlink" href="#day-1-atomistic-simulations-pyiron" title="Permalink to this headline">¶</a></h2>
+<p><strong>Authors:  <u>Jan Janssen</u>, Tilmann Hickel, Jörg Neugebauer (<a class="reference external" href="https://www.mpie.de">Max-Planck-Institut für Eisenforschung</a>)</strong></p>
+<p>Interactive: <strong>Atomistic simulations with pyiron</strong></p>
+<p>The scope of this second exercise is to become familar with:</p>
+<ul class="simple">
+<li><p>Interatomic potential calculation,</p></li>
+<li><p>the pyiron job management and</p></li>
+<li><p>the aggregation of multiple calculations.</p></li>
+</ul>
+</div>
+<div class="section" id="reminder">
+<h2>Reminder<a class="headerlink" href="#reminder" title="Permalink to this headline">¶</a></h2>
+<p>In the first session we learned how to create a pyiron project object and then use this pyiron project object to create atomistic structure objects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the Project object</span>
+<span class="kn">from</span> <span class="nn">pyiron_atomistics</span> <span class="kn">import</span> <span class="n">Project</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Project object instance for a project named atomistics</span>
+<span class="n">pr</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="s2">&quot;simulations&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a cubic aluminum fcc structure and repeat it 3 times in each direction</span>
+<span class="n">al_fcc</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create_ase_bulk</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">al_fcc_repeated</span> <span class="o">=</span> <span class="n">al_fcc</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Confirm the final structure has 108 atoms by calculating the length of the structure object</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">al_fcc_repeated</span><span class="p">)</span> <span class="o">==</span> <span class="mi">108</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="lammps-calculation">
+<h2>LAMMPS Calculation<a class="headerlink" href="#lammps-calculation" title="Permalink to this headline">¶</a></h2>
+<p>The Large-scale Atomic/Molecular Massively Parallel Simulator (LAMMPS) code is used inside pyiron for atomistic simualtion with interatomic potentials. These interatomic potentials approximate the interaction of atoms and can be either fitted to density functional theory (DFT) or experimental results. Still in contrast to density functional theory which scales cubically with the number of atoms interatomic potentials scale linearly with the number of atoms. Therefore we are going to use primarly interatomic potentials in this workshop but most calculations could be executed with a DFT codes as well.</p>
+<div class="section" id="molecular-dynamics-calculation">
+<h3>Molecular dynamics calculation<a class="headerlink" href="#molecular-dynamics-calculation" title="Permalink to this headline">¶</a></h3>
+<p>We start with a first molecular dynamic calculation at an ensemble with constant number of atoms, constant volume and contant fixed temperature.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a LAMMPS job object with the job named lmp</span>
+<span class="n">job_md</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span>
+    <span class="n">job_type</span><span class="o">=</span><span class="n">pr</span><span class="o">.</span><span class="n">job_type</span><span class="o">.</span><span class="n">Lammps</span><span class="p">,</span> 
+    <span class="n">job_name</span><span class="o">=</span><span class="s2">&quot;lmp&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assign the fcc aluminium structure to the LAMMPS job object</span>
+<span class="n">job_md</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">al_fcc_repeated</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define an ensemble with constant number of atoms, </span>
+<span class="c1"># constant volume and a constant temperature of 500K </span>
+<span class="c1"># and simulate 10000 molecular dynamics steps</span>
+<span class="n">job_md</span><span class="o">.</span><span class="n">calc_md</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">n_ionic_steps</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Execute the calculation - You get a warning that </span>
+<span class="c1"># not potential was set and the default potential was</span>
+<span class="c1"># used instead. The selection of interatomic potentials </span>
+<span class="c1"># is discussed below.</span>
+<span class="n">job_md</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/pyiron/lammps/base.py:229: UserWarning: No potential set via job.potential - use default potential, Al_Mg_Mendelev_eam
+  warnings.warn(&quot;No potential set via job.potential - use default potential, &quot; + lst_of_potentials[0])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job lmp was saved and received the ID: 75
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Animate the molecular dynamics trajectory</span>
+<span class="n">job_md</span><span class="o">.</span><span class="n">animate_structure</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "a85b7fe60f3342dfacee3e009e16edad", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "5f5776069b31481a896409242bd245b3", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+</div>
+<div class="section" id="reminder-job-management-in-pyiron">
+<h3>Reminder: Job Management in pyiron<a class="headerlink" href="#reminder-job-management-in-pyiron" title="Permalink to this headline">¶</a></h3>
+<p>After the successful execution of the calculation it is listed in the project database and can be reloaded using either the job name or the job id, therefore theese have to be unique for a given project.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># list all calculations in the current project using the project job table</span>
+<span class="n">pr</span><span class="o">.</span><span class="n">job_table</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>status</th>
+      <th>chemicalformula</th>
+      <th>job</th>
+      <th>subjob</th>
+      <th>projectpath</th>
+      <th>project</th>
+      <th>timestart</th>
+      <th>timestop</th>
+      <th>totalcputime</th>
+      <th>computer</th>
+      <th>hamilton</th>
+      <th>hamversion</th>
+      <th>parentid</th>
+      <th>masterid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>75</td>
+      <td>finished</td>
+      <td>Al108</td>
+      <td>lmp</td>
+      <td>/lmp</td>
+      <td>/home/jovyan/</td>
+      <td>again/simulations/</td>
+      <td>2020-11-09 23:36:28.580266</td>
+      <td>2020-11-09 23:36:37.899903</td>
+      <td>9.0</td>
+      <td>pyiron@jupyter-jan#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As discussed in the previous section by default pyiron calculations are reloaded from the database when a calculation with the same name already exists in a given project. Therefore to overwrite the calculation parameters we use <code class="docutils literal notranslate"><span class="pre">delete_existing_job</span></code> parameter in the <code class="docutils literal notranslate"><span class="pre">run()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change the temperature to 800K and calculate 20000 steps.</span>
+<span class="c1"># You get a warning message that the job is already finished. </span>
+<span class="n">job_md</span><span class="o">.</span><span class="n">calc_md</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">n_ionic_steps</span><span class="o">=</span><span class="mi">20000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/pyiron_base/generic/parameters.py:284: UserWarning: The input in GenericParameters changed, while the state of the job was already finished.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Execute the LAMMPS calculation by calling the run function </span>
+<span class="c1"># with the delete_existing parameter set to true: </span>
+<span class="n">job_md</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job lmp was saved and received the ID: 75
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reminder-plot-calculation-results-using-matplotlib">
+<h3>Reminder: Plot calculation results using matplotlib<a class="headerlink" href="#reminder-plot-calculation-results-using-matplotlib" title="Permalink to this headline">¶</a></h3>
+<p>In the same way we can again use matplotlib to analyse the results of our calculation. For example we can use the matplotlib library to plot the temperature over simulation steps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the matplotlib library for plotting. </span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># for the LAMMPS job object plot the temperature over simualation steps</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">job_md</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">steps</span><span class="p">,</span> <span class="n">job_md</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">temperature</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;timesteps&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Workflow_2_Simulation_Codes_33_0.png" src="_images/Workflow_2_Simulation_Codes_33_0.png" />
+</div>
+</div>
+<p>In the beginning the potential energy is close to the 0K equilibrium, therefore to accelerate the equilibration the kinetic energy is set to twice the expected kinetic energy. The additional kinetic energy is transfered to the potential energy resulting in an equal distribution of potential and kinetic energy. With this trick the equilibration is accelerated. The large temperature fluctuations are related to the small number of atoms in the simulation cell.</p>
+</div>
+<div class="section" id="advanced-input-options">
+<h3>Advanced input options<a class="headerlink" href="#advanced-input-options" title="Permalink to this headline">¶</a></h3>
+<p>Besides the general functions <code class="docutils literal notranslate"><span class="pre">calc_static()</span></code>, <code class="docutils literal notranslate"><span class="pre">calc_minimize()</span></code> and <code class="docutils literal notranslate"><span class="pre">calc_md()</span></code>. pyiron also has the option to modify the input of the simulation code directly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># display the LAMMPS input file </span>
+<span class="n">job_md</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">control</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter</th>
+      <th>Value</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>units</td>
+      <td>metal</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>dimension</td>
+      <td>3</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>boundary</td>
+      <td>p p p</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>atom_style</td>
+      <td>atomic</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>read_data</td>
+      <td>structure.inp</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>include</td>
+      <td>potential.inp</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>fix___ensemble</td>
+      <td>all nvt temp 800.0 800.0 0.1</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>variable___dumptime</td>
+      <td>equal 100</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>variable___thermotime</td>
+      <td>equal 100</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>timestep</td>
+      <td>0.001</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>velocity</td>
+      <td>all create 1600.0 61040 dist gaussian</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>dump___1</td>
+      <td>all custom ${dumptime} dump.out id type xsu ysu zsu fx fy fz vx vy vz</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>dump_modify___1</td>
+      <td>sort id format line "%d %d %20.15g %20.15g %20.15g %20.15g %20.15g %20.15g %20.15g %20.15g %20.15g"</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>thermo_style</td>
+      <td>custom step temp pe etotal pxx pxy pxz pyy pyz pzz vol</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>thermo_modify</td>
+      <td>format float %20.15g</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>thermo</td>
+      <td>100</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>run</td>
+      <td>20000</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change the number of simulation steps to 2000 </span>
+<span class="c1"># by manually modifying the run command.</span>
+<span class="c1"># You again get a warning message that the job </span>
+<span class="c1"># is already finished. </span>
+<span class="n">job_md</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">control</span><span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2000</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/pyiron_base/generic/parameters.py:284: UserWarning: The input in GenericParameters changed, while the state of the job was already finished.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="advanced-output-options">
+<h3>Advanced output options<a class="headerlink" href="#advanced-output-options" title="Permalink to this headline">¶</a></h3>
+<p>Besides the output properties it is also possible to access the output of a calculation directly from the data interface which is based om the hierachical file format (HDF5) pyiron is using to store the simulation data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print content of the job object </span>
+<span class="n">job_md</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;groups&#39;: [&#39;input&#39;, &#39;output&#39;], &#39;nodes&#39;: [&#39;HDF_VERSION&#39;, &#39;NAME&#39;, &#39;TYPE&#39;, &#39;VERSION&#39;, &#39;server&#39;, &#39;status&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print content of the output of the job object</span>
+<span class="c1"># use strings to specify the path for the data interface </span>
+<span class="n">job_md</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;groups&#39;: [&#39;generic&#39;, &#39;structure&#39;], &#39;nodes&#39;: []}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print content of the generic group </span>
+<span class="c1"># of the output of the job object </span>
+<span class="n">job_md</span><span class="p">[</span><span class="s2">&quot;output/generic&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;groups&#39;: [], &#39;nodes&#39;: [&#39;cells&#39;, &#39;energy_pot&#39;, &#39;energy_tot&#39;, &#39;forces&#39;, &#39;indices&#39;, &#39;positions&#39;, &#39;pressures&#39;, &#39;steps&#39;, &#39;temperature&#39;, &#39;unwrapped_positions&#39;, &#39;velocities&#39;, &#39;volume&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the temperature over simulation steps directly from the HDF5 file </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">job_md</span><span class="p">[</span><span class="s2">&quot;output/generic/steps&quot;</span><span class="p">],</span> <span class="n">job_md</span><span class="p">[</span><span class="s2">&quot;output/generic/temperature&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;timesteps&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Workflow_2_Simulation_Codes_48_0.png" src="_images/Workflow_2_Simulation_Codes_48_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="accessing-the-original-output-files-of-the-lammps-code">
+<h3>Accessing the original output files of the LAMMPS code<a class="headerlink" href="#accessing-the-original-output-files-of-the-lammps-code" title="Permalink to this headline">¶</a></h3>
+<p>While pyiron parses most of the output of the simulation codes some users might have the need to access addtional output parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Decompress the LAMMPS job</span>
+<span class="n">job_md</span><span class="o">.</span><span class="n">decompress</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the LAMMPS output file of the LAMMPS job</span>
+<span class="n">job_md</span><span class="p">[</span><span class="s2">&quot;log.lammps&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;LAMMPS (3 Mar 2020)\n&#39;,
+ &#39;units metal\n&#39;,
+ &#39;dimension 3\n&#39;,
+ &#39;boundary p p p\n&#39;,
+ &#39;atom_style atomic\n&#39;,
+ &#39;read_data structure.inp\n&#39;,
+ &#39;  orthogonal box = (0 0 0) to (12.15 12.15 12.15)\n&#39;,
+ &#39;  1 by 1 by 1 MPI processor grid\n&#39;,
+ &#39;  reading atoms ...\n&#39;,
+ &#39;  108 atoms\n&#39;,
+ &#39;  read_data CPU = 0.00113201 secs\n&#39;,
+ &#39;include potential.inp\n&#39;,
+ &#39;pair_style eam/fs\n&#39;,
+ &#39;pair_coeff * * Al-Mg.eam.fs Al Mg\n&#39;,
+ &#39;fix ensemble all nvt temp 800.0 800.0 0.1\n&#39;,
+ &#39;variable dumptime  equal 100\n&#39;,
+ &#39;variable thermotime  equal 100\n&#39;,
+ &#39;timestep 0.001\n&#39;,
+ &#39;velocity all create 1600.0 61040 dist gaussian\n&#39;,
+ &#39;dump 1 all custom ${dumptime} dump.out id type xsu ysu zsu fx fy fz vx vy vz\n&#39;,
+ &#39;dump 1 all custom 100 dump.out id type xsu ysu zsu fx fy fz vx vy vz\n&#39;,
+ &#39;dump_modify 1 sort id format line &quot;%d %d %20.15g %20.15g %20.15g %20.15g %20.15g %20.15g %20.15g %20.15g %20.15g&quot;\n&#39;,
+ &#39;thermo_style custom step temp pe etotal pxx pxy pxz pyy pyz pzz vol\n&#39;,
+ &#39;thermo_modify format float %20.15g\n&#39;,
+ &#39;thermo 100\n&#39;,
+ &#39;run 20000\n&#39;,
+ &#39;Neighbor list info ...\n&#39;,
+ &#39;  update every 1 steps, delay 10 steps, check yes\n&#39;,
+ &#39;  max neighbors/atom: 2000, page size: 100000\n&#39;,
+ &#39;  master list distance cutoff = 9.5\n&#39;,
+ &#39;  ghost atom cutoff = 9.5\n&#39;,
+ &#39;  binsize = 4.75, bins = 3 3 3\n&#39;,
+ &#39;  1 neighbor lists, perpetual/occasional/extra = 1 0 0\n&#39;,
+ &#39;  (1) pair eam/fs, perpetual\n&#39;,
+ &#39;      attributes: half, newton on\n&#39;,
+ &#39;      pair build: half/bin/atomonly/newton\n&#39;,
+ &#39;      stencil: half/bin/3d/newton\n&#39;,
+ &#39;      bin: standard\n&#39;,
+ &#39;Per MPI rank memory allocation (min/avg/max) = 4.652 | 4.652 | 4.652 Mbytes\n&#39;,
+ &#39;Step Temp PotEng TotEng Pxx Pxy Pxz Pyy Pyz Pzz Volume \n&#39;,
+ &#39;       0                 1600    -368.345664348245    -346.216327524245     11129.3817059862     975.959809779197    -506.173015089098     11199.8006475073     432.866725745116     9140.59499836731     1793.61337470476 \n&#39;,
+ &#39;     100     749.881580772722    -356.741524706435    -346.370035907039     40090.2503531197     2760.31703609456    -903.079195725193     40316.4423043625     1216.40418707706     36350.0514063421     1793.61337470476 \n&#39;,
+ &#39;     200     840.246014053288    -357.124302857366    -345.502998444861      38561.084682077     1586.89733791517     2024.37244130575     38792.6759622762     2639.98819885959     38598.9584444955     1793.61337470476 \n&#39;,
+ &#39;     300     803.975418948322    -356.435736999075    -345.316085221497     42261.9480803468       -1014.06165303     1868.70589685109     39413.6429757125     1415.08965412829     38793.8466205228     1793.61337470476 \n&#39;,
+ &#39;     400     810.368869409898    -356.518781278982    -345.310702739698     41999.6164429535     293.926461404266     2956.29537231371     36644.2112836132     638.739186058034     40801.3758083272     1793.61337470476 \n&#39;,
+ &#39;     500     762.363845407562    -356.269622633057    -345.725493684642     41232.4270765162     1580.67261976342    -30.2377891336238     39655.5232451737     1901.42320866177     39405.5321354773     1793.61337470476 \n&#39;,
+ &#39;     600     719.779181990795    -357.891619686303    -347.936472213067     36877.8146442467      -1485.078176708    -530.022672251052     34218.0480634678     2305.00997834194     35726.9080869063     1793.61337470476 \n&#39;,
+ &#39;     700     779.989226931201    -358.996892093632    -348.208989392475      34849.791931427     134.665144082224     1265.35623849104     33332.6813190347     2072.98105105041     33393.7013582744     1793.61337470476 \n&#39;,
+ &#39;     800     713.344122975588    -356.551381468828    -346.685236238361      40374.056052036     130.816195435251     3.56855498138445     36401.3335932569     2491.54549201523     38716.7319386568     1793.61337470476 \n&#39;,
+ &#39;     900     839.088494886636    -356.964282378298    -345.358987422992     41071.3080141472    -2679.13658917922    -249.241566696624      35847.844227083     1906.03123524834     41175.9594815169     1793.61337470476 \n&#39;,
+ &#39;    1000     850.155337896281    -356.798884171926    -345.040525531284     41420.9256049387    -407.196086341458     478.329131780837     39625.2464029036     1307.15493417534     40488.0647158703     1793.61337470476 \n&#39;,
+ &#39;    1100     858.815809455519     -356.98349938102    -345.105359182759     40076.6170408161     1142.20416857242     1970.26036350317      36546.375603244    -1965.23437694236     38086.4436119669     1793.61337470476 \n&#39;,
+ &#39;    1200     702.740392637799    -356.200725317146    -346.481238536826     38930.4361792011         333.61040466      1896.1189812407     37879.1427406753    -651.299493350818     41233.4969983771     1793.61337470476 \n&#39;,
+ &#39;    1300     760.031628130742    -358.498803408504     -347.98693097363     33213.9372046705    -554.064623252203     191.339182173998     34305.3537895353     2036.42214770849      35115.931322729     1793.61337470476 \n&#39;,
+ &#39;    1400     674.495599635681    -357.029776671621    -347.700938977469     36428.9342310195     1315.02797125625     2910.79098443515     36395.5045444763     125.406934549534     37853.1816951362     1793.61337470476 \n&#39;,
+ &#39;    1500     812.297032837413    -356.879132192462    -345.644385541965     38877.0133304646    -1209.16487622562    -1082.19799678315     38768.2872394998     2440.29146897183     40427.6898977389     1793.61337470476 \n&#39;,
+ &#39;    1600     793.764594084365    -356.115080282616    -345.136652744205     39588.7819003317     3494.45830023183     2544.50104043437     41571.8155340742     -118.70109423313     42003.3094941238     1793.61337470476 \n&#39;,
+ &#39;    1700      812.43855524628    -356.496115559444    -345.259411535789     40280.8835130497     556.232673520211     1426.33731319946     37873.7975097177     230.749875840913     40328.4395879412     1793.61337470476 \n&#39;,
+ &#39;    1800     899.953925971534    -358.221499465978    -345.774384744787     35953.0928527356    -767.587707045359     1143.81512197843     33427.1785657943     500.511360352108     34869.2024670573     1793.61337470476 \n&#39;,
+ &#39;    1900     813.721733787399    -358.573781507714     -347.31933005272     33221.2373055638     364.131531323922     1068.83579617249      34469.085877131     971.329732212536      33598.303728355     1793.61337470476 \n&#39;,
+ &#39;    2000     647.646128340881    -357.014300274368    -348.056813201358     39837.3109960031    -584.153764980713     2150.31196947532     36345.2712042205     735.473799967447     37557.2374788153     1793.61337470476 \n&#39;,
+ &#39;    2100     760.394390824431    -356.421548843936    -345.904659097915     42511.1469735922    -219.214968523139    -1884.03520597567     38193.9352234244      2210.1662551086     37491.8497658159     1793.61337470476 \n&#39;,
+ &#39;    2200     739.376149370269    -354.772997664352    -344.546807758698     43341.1392958603     693.475604196563    -722.356751903024     41956.9489605072      3207.0853780075       43091.68228717     1793.61337470476 \n&#39;,
+ &#39;    2300     856.276335795986    -356.720485834212    -344.877468678431     38713.4738998013     866.240228486074    -1525.86417803763     37041.7689691954    -39.2263868491735     42834.6830896656     1793.61337470476 \n&#39;,
+ &#39;    2400     745.740688122929    -356.389888203085    -346.075671408814      41053.536728352    -1717.41079416587     -1026.7052457347     37322.0876891668     832.564181620106     38332.6603585103     1793.61337470476 \n&#39;,
+ &#39;    2500     702.412365638531     -356.82937489122    -347.114424998372      40014.414427068    -2880.24577006219     107.125043147876     35985.9662975502    -38.2685323785348     36717.0616402923     1793.61337470476 \n&#39;,
+ &#39;    2600     762.423538962123    -358.372412870983    -347.827458310834     33834.4732417728    -1004.81997963182    -2994.95504804654     34174.8201761768    -237.635845608481     35316.2273222473     1793.61337470476 \n&#39;,
+ &#39;    2700     651.917678039588    -356.792332723748    -347.775766549461     35120.1675123595     -970.52712460589     99.8062642497652     36074.6434847671    -835.940000581904     37498.1549657058     1793.61337470476 \n&#39;,
+ &#39;    2800     685.051987385048    -355.413816712992    -345.938975356246     42016.9026293928     2875.11275436767    -2485.29823398253     41774.6612149999     -1262.1570112699     40925.1282870328     1793.61337470476 \n&#39;,
+ &#39;    2900     867.027659018289    -356.554956874334    -344.563239935497     40151.5958432988    -1809.28827847902     443.870110688133     40354.2075489155     219.697185425959      39137.890987414     1793.61337470476 \n&#39;,
+ &#39;    3000     861.231577261821    -356.723749463349    -344.812197177916     39727.3714899392    -246.568425598993     203.120966573274     38837.3634342714    -181.847425463459     35561.1875310664     1793.61337470476 \n&#39;,
+ &#39;    3100     739.319205213865     -356.60218073968    -346.376778419287     36937.6501894911     2679.55662761757    -921.020156149648     39926.7608474893     874.051616790185     36648.3926072473     1793.61337470476 \n&#39;,
+ &#39;    3200      719.49103062564    -357.703627451399    -347.752465352298     34687.3782266846     2426.60183356838     -1936.7177546883     36746.6718622789     322.925512681742      33551.856791057     1793.61337470476 \n&#39;,
+ &#39;    3300     741.410873387546    -357.562859533689    -347.308527694834     34214.4776918172     326.603475154767    -144.020276964408     37806.6646069269     1201.33020603643      33097.121541428     1793.61337470476 \n&#39;,
+ &#39;    3400     763.082528500868    -357.280055195622    -346.725986259557     39295.0902284143    -206.029436457679     1491.51093679661     36739.2698187759    -776.372554167981     36242.9417241969     1793.61337470476 \n&#39;,
+ &#39;    3500      762.14456702635    -356.436697955053     -345.89560180986     38113.6823313657     1003.45817278781     -1674.7205257678     39551.1973800642     1456.57037537553      36077.421255915     1793.61337470476 \n&#39;,
+ &#39;    3600     880.376594863603    -356.928709480432    -344.752365605618     38638.0348006314    -1204.09900569873    -3219.88220280614      38596.309941647     174.957397464502     37731.6993554285     1793.61337470476 \n&#39;,
+ &#39;    3700     892.929248418204     -356.46133024939    -344.111372687985     43746.8955214518    -1118.97550581751     -1787.2582380019     40877.0219286756    -334.200907389934     35633.2850109769     1793.61337470476 \n&#39;,
+ &#39;    3800     854.393216974481    -357.145287761964    -345.328315712859     40630.3259299718    -342.293671372876    -1284.76482139519     39840.7096063095    -1287.82547977228     37986.0028322895     1793.61337470476 \n&#39;,
+ &#39;    3900     751.166025414974    -357.632100926391    -347.242847184421     36873.8509510722     403.244737615138     1111.60293624685     39608.6635155635    -1232.28027536114      35922.075963608     1793.61337470476 \n&#39;,
+ &#39;    4000     777.514381501192    -357.860252754796    -347.106579233706     35216.9032514037    -1203.18071964633    -915.851677861811     36430.7970093418     1840.33919073591     36209.3230030433     1793.61337470476 \n&#39;,
+ &#39;    4100     769.258812599239    -356.352623698134     -345.71313159261     38513.9546378867    -2481.53156442883    -425.180231827488      41973.019253725     1046.76316079337     38336.5279243278     1793.61337470476 \n&#39;,
+ &#39;    4200     827.447332669194    -355.849386111992    -344.405098156519     39741.3575520559    -733.417224709384     -378.92164745868     40693.9079140137      505.41831443558     41467.9548135378     1793.61337470476 \n&#39;,
+ &#39;    4300      829.92123950646    -355.893737257111    -344.415233103092     39730.5781650864     583.248807477978     589.972319735323     39994.3259723284    -699.665302325702      41197.380979038     1793.61337470476 \n&#39;,
+ &#39;    4400     788.645805409368    -356.086498195544    -345.178867781333      38445.198859852     2489.35719425358     177.866647505178      40946.217082953    -463.904603678019     37647.5005575011     1793.61337470476 \n&#39;,
+ &#39;    4500     779.257055466703    -356.277254048518    -345.499477890455     39630.6465473869     223.920076449828     -207.59849914412     37630.2603923005     2077.97896192923     41618.1689484628     1793.61337470476 \n&#39;,
+ &#39;    4600     822.107937282041    -357.056871698131    -345.686432042007     38222.3369431844    -452.985677227763    -655.391933282801     36528.4417656839    -304.242046248717     37789.0261965746     1793.61337470476 \n&#39;,
+ &#39;    4700     690.335942805126     -355.90688750492     -346.35896462989     40478.6604466466    -1024.85982240335      -743.0375571704     41196.4417678971     1239.33802865664      39574.307412173     1793.61337470476 \n&#39;,
+ &#39;    4800     721.310511868965    -357.507273841144    -347.530946796244     36220.7851057488    -602.910620651538     790.609647091253     36818.9900574573     1033.13670007759     34642.2366112022     1793.61337470476 \n&#39;,
+ &#39;    4900     598.126632907042    -356.945565534802    -348.672974457924     34973.6981474455     692.440977173571     1043.56837444237     36943.2787833837      1202.2227755585     36221.5311345695     1793.61337470476 \n&#39;,
+ &#39;    5000     744.409278003747    -357.807021423816    -347.511219143906     34251.7991403481     2791.13648035686      625.81078198627     35014.8347763759     1530.87930114575     37426.4740348971     1793.61337470476 \n&#39;,
+ &#39;    5100      826.38586311512    -357.221077169538    -345.791470224872     37338.0094096911    -480.413569144121    -240.548435732395     37919.0349488701     227.414826380036      38415.409831109     1793.61337470476 \n&#39;,
+ &#39;    5200     849.969767773974    -357.016998852805       -345.261206802     37667.1545206298     505.922356070663    -335.512276783935     40199.8703492309     -1933.0825819593     38522.2804789215     1793.61337470476 \n&#39;,
+ &#39;    5300     798.390819399982    -356.149097364994    -345.106685265186     38528.7620047079    -125.469444261041     3376.73911021242     38388.7402044006    -1721.62409168936     40983.0597846419     1793.61337470476 \n&#39;,
+ &#39;    5400      796.11942143275    -357.052930434848    -346.041933666715     37064.3632393267     1783.59848745048     2027.41987618273     38612.9116394476     381.012750410135     39332.8748532915     1793.61337470476 \n&#39;,
+ &#39;    5500     759.378370754079    -358.231662573509    -347.728825233961     35183.1852184311    -1099.10968130291     21.6256164729646     38488.3236271842    -860.044655720406     34330.3207544378     1793.61337470476 \n&#39;,
+ &#39;    5600     759.707414058388    -358.563027087677     -348.05563880431     33484.9176988675     80.1434092051375    -2511.37871388583     36432.4406799049     877.469546301259     32864.1160963895     1793.61337470476 \n&#39;,
+ &#39;    5700     831.734894035661    -357.370762760962    -345.867174249468      37022.483754613     1880.65125348503    -776.782964940565     36476.2907555196     19.0472079092738     37280.7756562849     1793.61337470476 \n&#39;,
+ &#39;    5800     828.872520226219    -356.293963320425    -344.829963830273     41671.3771045732     3867.62286056662     -191.09430199691     42161.3118730995     2589.45020680191     40182.5988495175     1793.61337470476 \n&#39;,
+ &#39;    5900     782.976370508296    -355.829875082702     -345.00065769007     36909.9047728497     1396.54862607289    -1302.54876905196     41663.5948414456    -1567.07551008909     39154.8869947455     1793.61337470476 \n&#39;,
+ &#39;    6000     809.913520983966    -357.022470035565    -345.820689345461     38977.2013853431     1138.55480000766     788.033497624611     38995.4296547808    -2000.93164126332     41759.8939045432     1793.61337470476 \n&#39;,
+ &#39;    6100     679.195638612474    -356.739808760931    -347.345965600777     36873.2723095355    -430.434253400109    -298.386977295956     37520.4397558691     1978.26606158265     38934.2386609225     1793.61337470476 \n&#39;,
+ &#39;    6200     749.844234655478    -358.295336464171     -347.92436419278     34783.9653845057    -363.311463115925    -251.232761220817     35968.5988299888     508.770255271154     33488.2064854663     1793.61337470476 \n&#39;,
+ &#39;    6300      820.49851196061    -357.550320429478    -346.202140470248     38160.8718882195    -238.828029488256     -1718.2872794099     40851.6717990614    -422.529762327098     36341.5318312551     1793.61337470476 \n&#39;,
+ &#39;    6400     856.789717772933    -356.317030845346    -344.466913187885     38821.9083882587     732.451331776492    -3550.00359657497     38951.0659832488     -616.62643046416      41246.090070392     1793.61337470476 \n&#39;,
+ &#39;    6500     793.839737718061    -355.724772878842    -344.745306041193     44057.7756089154     2249.24076275726    -2570.50246913036      43580.698621434    -334.662614148369     39288.8765133271     1793.61337470476 \n&#39;,
+ &#39;    6600      742.91771784507    -356.241367560821    -345.966194804127     38155.9659612084     641.209891465672    -15.3363831502308     38529.5615366837     2911.99642882127     37305.5163468393     1793.61337470476 \n&#39;,
+ &#39;    6700     752.446643669222    -357.511774900153     -347.10480913775     36409.9486684763     772.154531163047     1136.27254452766     37094.6079540005     1002.59985188655     36878.3341896305     1793.61337470476 \n&#39;,
+ &#39;    6800     782.468195697952    -357.466725061903    -346.644536151486     36478.1681885197     2157.96955361209     125.297281094587     37444.6610262222    -50.4761358705569     34401.0128533116     1793.61337470476 \n&#39;,
+ &#39;    6900     790.362332255749     -355.13418822804    -344.202816813359     45406.8694267006    -1264.87331915798    -295.683196464516     42051.9309169773     341.320024663642     38591.6320078236     1793.61337470476 \n&#39;,
+ &#39;    7000     793.340534793587    -354.476311796453    -343.503749352341      44377.420038534     2288.21205255213     -2941.4734642014     45114.9940811359    -1780.86103081083     42409.4353585618     1793.61337470476 \n&#39;,
+ &#39;    7100     867.932809590424    -356.725633835295    -344.721397907778     40557.2363074909    -343.163912773467     -2785.3831976551     39515.5953051268    -564.996527133805     34937.2674509234     1793.61337470476 \n&#39;,
+ &#39;    7200     775.896331255727    -357.025014986695    -346.293720452405     38440.7505275585    -2512.69977087965     -3776.7500144944     38980.7131477292     1072.15168744553     36301.1290157804     1793.61337470476 \n&#39;,
+ &#39;    7300      836.18812910472    -358.099689154442    -346.534508681199     35580.4843013567    -3906.24778540816    -748.342427103274     37203.7181207501      2322.9652390534     32363.5262473724     1793.61337470476 \n&#39;,
+ &#39;    7400     742.111671392371    -356.364959126243    -346.100934665453     41208.2322082013     1206.08098296198     1238.48429505101     40191.6314735752     1636.18220484054     35289.8991119516     1793.61337470476 \n&#39;,
+ &#39;    7500     967.396596491673    -356.911964794258    -343.532061590411     40426.3774220852    -1668.90443753136     424.088540641739     43155.3594131319    -132.396585157213     34404.8562342343     1793.61337470476 \n&#39;,
+ &#39;    7600     741.987356246388     -353.50474440616    -343.242439327706     46388.0599684382    -311.826930076994    -757.636453447027     46558.5447190935    -1043.16313088454     41932.1500018188     1793.61337470476 \n&#39;,
+ &#39;    7700     850.932342570329    -356.196776978323    -344.427671713839     41212.7245057621    -1706.33577007303     392.036735352712     40113.0672303836     1159.69751476588     38074.0680322588     1793.61337470476 \n&#39;,
+ &#39;    7800     812.614141802327    -356.784777568248    -345.545645035817     37231.3240401418     1826.57623265249     407.309300372894     39197.3798946442    -902.257857479664     35911.6664394123     1793.61337470476 \n&#39;,
+ &#39;    7900     761.592367862125     -356.70180976684     -346.16835099746     39800.0664988457      4540.3450313085     1895.02103924553     38832.5544944744     214.241542196366      36323.030703978     1793.61337470476 \n&#39;,
+ &#39;    8000     846.785660095257    -357.725823314371    -346.014070133133     35864.4053003264     2349.23413938048    -668.311510019675     38318.4834401756    -422.844724731193      38036.781373301     1793.61337470476 \n&#39;,
+ &#39;    8100     751.188666446606    -355.880394696768    -345.490827810413     42088.8847356908     270.078595374847    -2143.45781260942     40297.6463767348    -2746.49413355437     39858.8477014905     1793.61337470476 \n&#39;,
+ &#39;    8200     907.554415057673    -356.172790115215     -343.62055427964     39902.8572434687      2942.0888738909     1552.26275239709     41948.7958696854    -985.923485515233      38866.511805982     1793.61337470476 \n&#39;,
+ &#39;    8300     832.795724191115    -355.294401654091    -343.776140975208     42484.8891792162     1789.80053369749     223.117069667468      43044.776739847     221.621868099776     41386.0525403478     1793.61337470476 \n&#39;,
+ &#39;    8400     790.510107545386    -356.649563816128    -345.716148545722     38267.8426779374     2244.93568989913    -1967.14336233188     39696.9534714058     378.659421504136     37817.9731487827     1793.61337470476 \n&#39;,
+ &#39;    8500     800.501625953321     -357.73439535047    -346.662789032419     35021.1289256523       609.1186317779    -776.702273321142     37582.2331080461     186.519885411398     35187.7581689388     1793.61337470476 \n&#39;,
+ &#39;    8600      677.51188117799    -356.099234206712    -346.728678818681     39221.4977325478     3060.71820135887     2663.89113882903      43337.731035611     665.833286795631      39954.350107263     1793.61337470476 \n&#39;,
+ &#39;    8700     845.061238574824    -357.249028540887    -345.561125550056     35990.4468839631     560.110437290344       1627.269475785     38682.5256145712     1362.29482441532      38390.643108026     1793.61337470476 \n&#39;,
+ &#39;    8800     840.903657181993     -355.83991300466    -344.209512838214     42905.7921638168     1766.31330561964     518.548865063824      41671.302362059     494.811780786297      39182.019214144     1793.61337470476 \n&#39;,
+ &#39;    8900     1010.75298067284    -355.768670843976    -341.789112621994     42474.2391137064     1328.25570686813     1938.52527563103     42385.3021956046     851.938829434333     42341.5234094057     1793.61337470476 \n&#39;,
+ &#39;    9000     953.264061718669    -355.528583830332     -342.34414539034     42571.8549520773    -2100.78717890256    -854.250645320613     43084.9751392484    -1424.44705072745     44905.0594325278     1793.61337470476 \n&#39;,
+ &#39;    9100     851.668155649737     -357.22735193175    -345.448069757595     37496.5641328316     1572.80659113757    -3811.33198025542     36490.6117319065    -3099.81523869372     36140.3279199671     1793.61337470476 \n&#39;,
+ &#39;    9200     856.048950746444    -358.004714267291    -346.164842036729     36095.7422250628     118.826637462534     657.791952229538     36774.2706639562    -1202.33064782998     34196.3468720894     1793.61337470476 \n&#39;,
+ &#39;    9300     819.105058199289    -357.737078615112    -346.408171285653     36608.8657313905     2798.94267891615     2401.51735945741     38033.7837706624     1892.00662470925     34021.7576522639     1793.61337470476 \n&#39;,
+ &#39;    9400     824.615697791146    -357.500124142738    -346.095000063502     36017.1710194406     2439.73698903537    -326.969120429015     37739.0308880657     2495.95764856247     37897.5526491098     1793.61337470476 \n&#39;,
+ &#39;    9500     736.522165389253    -355.557835367532    -345.371118444881     41030.3814500166    -107.665398565148     1638.31318138482     43442.0687510181      -740.8443909917     38470.0643298087     1793.61337470476 \n&#39;,
+ &#39;    9600     886.570191850558     -356.18435675278    -343.922350256793     44900.6346469954     2346.79040660161     71.9793110859875     43094.2072038589    -1743.94031559657     38815.3640871689     1793.61337470476 \n&#39;,
+ &#39;    9700     946.697196151611    -356.047147775837    -342.953534573353     42539.3648324139    -292.310682683279     672.648792127791     42145.0513713537     161.941401018845     39576.1807829896     1793.61337470476 \n&#39;,
+ &#39;    9800     784.331656460008    -355.385665321215    -344.537703191509       42112.94213063     1143.76307351372     1873.28942760912     41858.1307350454    -1606.27989376496     41750.1437452593     1793.61337470476 \n&#39;,
+ &#39;    9900     714.427609713026    -356.603004436657    -346.721873679342     40672.7701676998     1035.04159458382     2129.95170725607     38849.8853187908     807.432744924296     38306.0151897274     1793.61337470476 \n&#39;,
+ &#39;   10000      722.29056563971    -356.733882074541    -346.744000067142      38264.220522289    -497.681236426798    -379.596624319038     39325.0856584253     230.816615728109     36117.6230272646     1793.61337470476 \n&#39;,
+ &#39;   10100     734.517995932581    -356.103610434324    -345.944612849773      38552.949710672    -2407.51777901244    -1297.76461849835     41490.7305170047     1476.36695796645     38233.9788853926     1793.61337470476 \n&#39;,
+ &#39;   10200     824.575545571096     -355.87341992785    -344.468851187364     38865.2684805507     1872.64665375643    -2014.83411678444     43533.0898701872     2388.99365189952     40960.3947935395     1793.61337470476 \n&#39;,
+ &#39;   10300     926.118100439051     -355.95187275825    -343.142885643613     39234.8686659589     38.5529899058919    -942.002346276504     41545.3802637566    -2311.16683704817     40741.0433419482     1793.61337470476 \n&#39;,
+ &#39;   10400     827.045433073616     -355.60618981368    -344.167460465407     41408.0618089217    -8.34135645696648     65.3691425767916     39607.6798445401     105.104159392463      42644.370686051     1793.61337470476 \n&#39;,
+ &#39;   10500     807.594542253442    -357.860846538843    -346.691139262124     36779.6591127854    -421.327502129863     864.868441065833     36815.7019772418    -1223.61797299441     35721.6814603745     1793.61337470476 \n&#39;,
+ &#39;   10600     817.300879567842    -358.271653248168      -346.9676992166     35362.1335589773    -461.211362787567     1148.07672257078     35784.7422405989     22.0657551739406     34602.6390251694     1793.61337470476 \n&#39;,
+ &#39;   10700      746.02936645356    -356.480910679297    -346.162701222518     36137.7784735419     370.160204150254    -16.7673350430108     40647.5503155331     168.330991356153     40430.5351364572     1793.61337470476 \n&#39;,
+ &#39;   10800     846.608585943437    -356.270810835979    -344.561506738208     38346.5180993067    -487.304764409416     2369.36260400656     43586.2649983077     1164.89941985036      38016.669290621     1793.61337470476 \n&#39;,
+ &#39;   10900     870.320921977546    -356.165908454289    -344.128642937154     39401.2166543923    -137.490587805415      1204.1361254251     43667.1730965996     3597.52198980086     38695.5190648119     1793.61337470476 \n&#39;,
+ &#39;   11000     863.158619594574    -357.647985501442    -345.709780610475     36272.3476234514     1980.45601667717     1010.19874850039     38970.1600469157      77.462487465937     34477.3844981243     1793.61337470476 \n&#39;,
+ &#39;   11100     704.167458847832    -357.591165425601    -347.851941127261     33967.8835910253     1939.80569556716     815.400589429562       39304.16253668     1244.93753325343     36211.0655300913     1793.61337470476 \n&#39;,
+ &#39;   11200     725.149566462142    -357.261471101424    -347.232046723912     36180.3028626804     2280.39179140233    -735.742904421594     37429.4293551411     1504.34446968503     36836.1697033886     1793.61337470476 \n&#39;,
+ &#39;   11300     812.548883438161    -356.777826213299    -345.539596258569     38352.0128724561    -707.728754424876      1714.1871136185     39695.3373926769       4.544523918113     34667.4077418341     1793.61337470476 \n&#39;,
+ &#39;   11400     853.679124537665    -356.566158430948    -344.759062876878     37548.7174149195     2136.86384994103    -776.455570285565     39754.9352472207     1588.07805331313     38592.3291284025     1793.61337470476 \n&#39;,
+ &#39;   11500     889.541787746101    -357.078622130134    -344.775515980099     38956.0059308913    -1377.63911521614    -187.418990405616     38343.4968549555     645.308718260954     40202.3631261767     1793.61337470476 \n&#39;,
+ &#39;   11600      751.30537025826    -356.972251306763    -346.581070309184     38728.0148943543     269.888724009166    -2118.18253293686     37478.7702077422    -140.370215137099     38490.4323034569     1793.61337470476 \n&#39;,
+ &#39;   11700     778.442376130597    -358.846633197059    -348.080124734891     35031.1755513612    -51.8645047197146      2139.6637469829     32534.6601611344     413.886729222508     34008.4554083276     1793.61337470476 \n&#39;,
+ &#39;   11800      724.43956640564     -357.50454325599    -347.484938772476     34923.4719676359     1768.83376867061    -69.6358751804642     36580.3098552521    -1423.39013916291     37040.5474194563     1793.61337470476 \n&#39;,
+ &#39;   11900     712.376252520404    -356.050935947551    -346.198177174149     39255.1675410121    -1724.93259587955    -1225.77683783917     39927.6605862326    -1237.84518069288     40438.8236184215     1793.61337470476 \n&#39;,
+ &#39;   12000     799.338473716167    -356.512371868453    -345.456852917673     37794.7679979708     10.3549069320649    -2971.39907273625     37738.6842168812    -4342.17963059355     39022.5878427786     1793.61337470476 \n&#39;,
+ &#39;   12100     754.061516661289    -355.944257868972    -345.514957063838     42968.5355794191     244.219076726714    -2030.26039708891     39664.3872244434    -1908.33042435394     40626.1580298886     1793.61337470476 \n&#39;,
+ &#39;   12200     801.376868625596    -356.621283767645    -345.537572112158     37991.1188587035    -2085.67937000614      -925.1789866914     40872.0617471302     227.310233502005     39420.2412479503     1793.61337470476 \n&#39;,
+ &#39;   12300     706.864711398864     -356.45350169733    -346.676972142615     39284.1419696234    -618.433964170184    -723.695059310048     38403.9940842116     424.928415927877     36926.1505696995     1793.61337470476 \n&#39;,
+ &#39;   12400     725.699973056312    -358.349905461108    -348.312868500526      33701.277289337     1235.31396727601     1738.75625580515     35361.7686934078     -1319.4328336897     36424.8522506842     1793.61337470476 \n&#39;,
+ &#39;   12500     706.693573872561    -357.582236137865    -347.808073558127     34970.5867135301    -1259.00412091415     2049.16420957715     37678.0191974868    -983.858073675155      33921.471533761     1793.61337470476 \n&#39;,
+ &#39;   12600     840.587171878442    -357.718905576795    -346.092882666525     37175.7761508061     -1131.0388736947    -1037.74247141678     35850.0658990575    -294.454513799936     36706.7439472803     1793.61337470476 \n&#39;,
+ &#39;   12700     824.207272150889    -356.776744848496     -345.37726963711     35610.6465457175    -734.802629316457     130.680878716874     39355.8092188605     389.814541816564     41624.2934244488     1793.61337470476 \n&#39;,
+ &#39;   12800      851.68648944656    -357.005990152708    -345.226454406825     36298.2769903847    -436.440804302677     893.744375486674     39791.3091282056    -560.394746584602     36029.0530375121     1793.61337470476 \n&#39;,
+ &#39;   12900     714.211364258062    -355.556647162843    -345.678507260846     40754.3877321983      -4325.188030357     2063.97359638905     41104.8547401525    -1824.95651834025     39007.4166033455     1793.61337470476 \n&#39;,
+ &#39;   13000     687.039449973445    -356.781753351037    -347.279423726138     36619.7130000974     523.714330908832    -1037.90519062326     36944.5570539405    -850.595852310524     39798.8720253236     1793.61337470476 \n&#39;,
+ &#39;   13100     707.071634657349    -358.105049354005    -348.325657877737     33808.0479918567     2568.47151200497    -1270.48443853872     34507.3056634513      163.43608478855     33635.3553975206     1793.61337470476 \n&#39;,
+ &#39;   13200     814.859654958424    -358.439979319201    -347.169789463662     36609.5866016748    -57.6950715500698      1442.0941845626     33106.7417057346     -1940.5087793723     37273.2982803396     1793.61337470476 \n&#39;,
+ &#39;   13300     794.389693945318    -356.377215243815    -345.390142052046     40005.7570102314    -1177.52216780881      1306.6013845571      36383.317541955    -240.023257344546     40077.7832453257     1793.61337470476 \n&#39;,
+ &#39;   13400     794.948384568479      -356.2683582055    -345.273557855619     41784.6668146529    -347.070270326794    -227.358089186407     39236.2126424616     549.501402980235     39066.0910242047     1793.61337470476 \n&#39;,
+ &#39;   13500     828.124363332705    -356.912407219914    -345.458755364695     39377.3833781558    -750.348725497878     1307.07429030181     37888.6541447395    -542.907054291556     38482.3714943569     1793.61337470476 \n&#39;,
+ &#39;   13600     730.245500148766    -356.507375355454    -346.407469957328     39848.7457669929     -513.51394875679       1902.064312809     35520.8114665291    -2471.77856836454      37120.776476944     1793.61337470476 \n&#39;,
+ &#39;   13700     721.686956698759    -357.745082400917    -347.763548809496     38760.2281917025    -1682.21255013259     2521.33823205598     34034.4634870747     -1630.5811037507     36452.9249038094     1793.61337470476 \n&#39;,
+ &#39;   13800     685.092585480854    -357.727067760891     -348.25166489856     35663.1582801697     661.564506574272     3066.50587049692     36118.1467441636     317.702454079284      35465.372700253     1793.61337470476 \n&#39;,
+ &#39;   13900     738.012167632374    -356.250355776017    -346.043030877425     42148.7454647345     1361.66170348727    -102.807603232912     36420.3970491095    -331.179644290107     38985.0335920229     1793.61337470476 \n&#39;,
+ &#39;   14000     842.885414029434    -356.376427334687    -344.718617815253     41159.7171226039    -1293.33425141254    -79.6559956831809     40250.4712064319    -1636.88421953813     39679.4861525449     1793.61337470476 \n&#39;,
+ &#39;   14100     775.026950080433    -355.509155183362    -344.789884917108     40899.0135113297    -1656.25580544481     1642.06314321659      40565.711663888     1972.98048954085      38475.927574105     1793.61337470476 \n&#39;,
+ &#39;   14200     786.244281861666    -357.036937297244    -346.162521960206     39501.1105936467     1384.81887588005     502.263400216768     37342.0890722394     1876.61981137556     37511.7375106753     1793.61337470476 \n&#39;,
+ &#39;   14300     794.967534680469    -358.198435007788    -347.203369795857     34436.1808652866     141.142296083205     456.478243706059     34875.6682144241     -2530.6972742239     36158.4881101076     1793.61337470476 \n&#39;,
+ &#39;   14400     834.210738034859    -358.245664753542    -346.707833250935     36808.7870789388     1079.55969206398     1465.37786333602      35580.861062594    -1568.76450004086     36762.4001011609     1793.61337470476 \n&#39;,
+ &#39;   14500     860.029605635813    -355.740353781325    -343.845425767746     42387.4249355553    -839.028395837209     2691.93255109681     39521.4818895289     -171.16853105196     39684.2634885065     1793.61337470476 \n&#39;,
+ &#39;   14600     886.830981295968    -356.110999710303    -343.845386278392     40057.6403437361    -868.994108606089    -1367.39134239525     40181.1166094801     134.097874862007     42689.0347204388     1793.61337470476 \n&#39;,
+ &#39;   14700     817.388116448499    -356.727234739291    -345.422074148776     40560.3221592834     843.977059016213    -1402.45726827535     37461.8055746028    -746.353411214356     40621.3753201954     1793.61337470476 \n&#39;,
+ &#39;   14800     853.664638511787    -358.213616485159    -346.406721284931     37045.6038500878    -1386.08961263408     4632.63359200648     36080.9826836947     914.175881453034     37774.0673375834     1793.61337470476 \n&#39;,
+ &#39;   14900     797.690130823385    -357.782189047929    -346.749468056572      38530.150123081    -349.022589577603     3772.46270154743     35222.4867506702    -1538.55275994818     36947.6849513549     1793.61337470476 \n&#39;,
+ &#39;   15000      799.35958259726    -356.807377250891    -345.751566346649     35357.6885745629    -719.494132734172     2023.38950245296     37633.9916707623    -2458.34702820137      41966.546153717     1793.61337470476 \n&#39;,
+ &#39;   15100     903.750863706071    -355.761565640393    -343.261936097935     42841.1586802239    -83.9290234233217     652.685629831055     40513.1983921849    -4365.23632757154     41235.4768407087     1793.61337470476 \n&#39;,
+ &#39;   15200     819.163717626797    -354.919492335869    -343.589773697517     46409.5537392128     1835.49330453991     4482.81967865854     38743.4650992806    -691.882032953736     46230.8895734687     1793.61337470476 \n&#39;,
+ &#39;   15300     779.236613127598    -356.127629815488    -345.350136392055     40889.7296026711    -2284.21678598481     2638.43950511737     34225.0277411632      3633.6930656367     39467.3067497457     1793.61337470476 \n&#39;,
+ &#39;   15400     757.437122057121    -356.686628230744    -346.210639982617     38212.0657681688    -2707.41387299544     891.739834708601     38651.3196416952     1689.63089509138     37862.1270981151     1793.61337470476 \n&#39;,
+ &#39;   15500     786.931736603073    -357.138152811264    -346.254229400774      37929.513061566    -977.078185989203     924.951232748421     35549.8286810379     348.896987371433     39036.1750979915     1793.61337470476 \n&#39;,
+ &#39;   15600     736.732140941442    -355.989475500738    -345.799854440763      40168.265838567     -294.08917363854     667.144753570203     38410.4205701525    -2227.87738999591     41885.7504568412     1793.61337470476 \n&#39;,
+ &#39;   15700     950.031240788351    -357.009186820301    -343.869460994846     37488.5250152125    -475.639977409668    -753.080185884916     36926.4200258786    -436.261622706333     39877.9277861901     1793.61337470476 \n&#39;,
+ &#39;   15800     848.174928559949    -354.353247208534    -342.622279283675       45447.25836776    -1820.61327901581      2029.3968499906     44401.4620002593    -1376.28265052667     43848.1932547139     1793.61337470476 \n&#39;,
+ &#39;   15900     858.582156953509    -356.072790741313    -344.197882152375     43409.9601621882     2298.84214922486     549.324750742336        40549.8314121     2998.28628625907     42113.9190806361     1793.61337470476 \n&#39;,
+ &#39;   16000     779.434627150029    -356.357455041607      -345.5772229188     39191.7106585927     879.410728929475    -704.100913393134     35462.4690991472    -628.008733559899     42778.5067755251     1793.61337470476 \n&#39;,
+ &#39;   16100     784.819807398893    -357.032706302583    -346.177992637535     37835.1798788068     -1370.0088575188    -1686.16998760573     38299.4789140716    -310.243328687557     38874.7224755823     1793.61337470476 \n&#39;,
+ &#39;   16200     836.382503276106    -357.620882823366     -346.05301399293     37951.5406458894     2328.87733977287     2718.24885126109     36830.0171264515    -251.915265406183     38496.0557441355     1793.61337470476 \n&#39;,
+ &#39;   16300     861.618479118728    -356.932245293948    -345.015341832572     42077.2258484927    -910.345686278825     1241.22661137507     37091.1880348415    -245.261888382486     39954.9177365369     1793.61337470476 \n&#39;,
+ &#39;   16400     861.133599498874    -355.460659748904    -343.550462577795     38807.6562982896     761.198523863945    -368.838829052675     43337.4102975003     1250.95176643911      43949.423678868     1793.61337470476 \n&#39;,
+ &#39;   16500      911.08116146375    -356.246300991676    -343.645287306656     43213.4203431485     429.596508902729    -299.964915116679      42976.940233386     2485.31268365381     38825.6323125825     1793.61337470476 \n&#39;,
+ &#39;   16600     846.496702044505    -357.885769824197    -346.178013174229     35551.9329533843     1646.78804025541    -954.666586198171     35244.5767964553     536.774097181813     34764.8331781458     1793.61337470476 \n&#39;,
+ &#39;   16700     861.148054097326    -358.991409560813    -347.081012470531     34617.1677856062    -1174.58403777501    -1284.91291761226     32620.4032072595     851.276801157856     34642.3960315908     1793.61337470476 \n&#39;,
+ &#39;   16800     746.531702223648    -356.831837245211    -346.506680065023     33877.6676436539    -1752.59242044953    -1789.34802520829     38326.1086849873     145.599397921678     39699.8802387804     1793.61337470476 \n&#39;,
+ &#39;   16900     809.400708771001    -356.392129668272    -345.197441599536      36798.254749817     3890.79474602444    -2425.48575377512     40622.9944623613    -654.044933002952      40616.846578928     1793.61337470476 \n&#39;,
+ &#39;   17000     895.601191685851    -356.890929668939    -344.504016899694      39348.260932247    -4323.01029306485    -1158.34995489929      39420.276572551     -1790.1614725735     36864.1007512764     1793.61337470476 \n&#39;,
+ &#39;   17100     781.902221487617    -356.143822180738     -345.32946116653     37937.6331672169    -2677.08545258973      -1521.785118176     39438.2546982093    -987.665059590171     41212.7416264693     1793.61337470476 \n&#39;,
+ &#39;   17200     699.756683372468    -357.379999992542    -347.701780404296     34115.4413161353     393.935130405083    -1149.92080472731     37811.8012347075     25.6156642918339     35139.0026683158     1793.61337470476 \n&#39;,
+ &#39;   17300     736.640295851624    -357.786795100754    -347.598444335109     34289.1658921556    -1769.96152438441    -842.333148860581     35943.0231292643     1055.94618486112     34820.8784613138     1793.61337470476 \n&#39;,
+ &#39;   17400     796.074950125937    -356.979319704575    -345.968938011771     35547.7484811156    -825.458901071941    -64.3383694779713     39184.4383810632     1640.03171196078     39253.7146306027     1793.61337470476 \n&#39;,
+ &#39;   17500     771.274016587926    -355.717047375931     -345.04968331551     40392.1828204757    -445.990460646558     711.082327182498     40649.0546907547      168.69461824953     40745.7831067794     1793.61337470476 \n&#39;,
+ &#39;   17600     902.443816277888    -357.357381297466    -344.875829312998     37965.3830763842    -2389.60978610972    -1036.22271557285     37515.7512703833     1625.51376172823     38159.7451988512     1793.61337470476 \n&#39;,
+ &#39;   17700      840.66031202573    -357.383030820685    -345.755996321069     38650.7236168551    -252.688987234936    -1060.77571657922     34780.6571877659     707.650502085862     37933.4925921504     1793.61337470476 \n&#39;,
+ &#39;   17800     724.436558433976    -358.222766194257    -348.203203313504     34130.2753716348    -85.3822088896514     -27.737172229968     34053.7076994379     533.483157760286     34295.1371893198     1793.61337470476 \n&#39;,
+ &#39;   17900     668.313071633651    -357.459334813948    -348.216006647659     35434.8739627128    -1147.01410139439    -170.433879826082     38254.8394889396    -3257.60771316637     34666.1287284872     1793.61337470476 \n&#39;,
+ &#39;   18000     889.530408105186    -359.211038822631    -346.908090062537     33172.9077969678     1623.95953561924    -1129.10510217797     34225.4422954948    -158.741521351069     34969.3096385357     1793.61337470476 \n&#39;,
+ &#39;   18100     822.707315271459     -357.12215729139    -345.743427736883     39572.8513730713     3265.01626290738    -1848.06077821197      37580.701973637      236.70678998032     38788.4262222818     1793.61337470476 \n&#39;,
+ &#39;   18200     798.184881536036    -356.177750160315     -345.13818635323     39680.4887784247     901.375913566574    -3116.29419620845     41648.1922869513    -519.592691065023     40489.3699718967     1793.61337470476 \n&#39;,
+ &#39;   18300     792.061823752229    -356.041041865849    -345.086165063821     39623.3124401486     596.515056692137     1520.42191134844     41385.4970165593     1217.49601098358     35713.9738149434     1793.61337470476 \n&#39;,
+ &#39;   18400     780.589355983123    -357.326413180711    -346.530210193348     37367.0425154381      2155.7195441979     797.633540061855     34612.9608836162    -2668.55060776923      37160.720749246     1793.61337470476 \n&#39;,
+ &#39;   18500     658.886490938263    -357.479443458802     -348.36649277958     35400.1485171784     223.648274812416    -48.0995613448334     34218.1366852397    -2896.55447406831     38213.4284634241     1793.61337470476 \n&#39;,
+ &#39;   18600     742.753821966333    -358.144507274633    -347.871601334879     33155.5484176314     368.372332491591      952.89697073968     36391.3265778431    -1766.30341118637     34798.4408373551     1793.61337470476 \n&#39;,
+ &#39;   18700     750.651824142296    -356.965958018747        -346.58381611     40449.5609382063    -1348.04316983457     -841.76014307215     36703.2604582588    -1671.82247913636     38432.8134329816     1793.61337470476 \n&#39;,
+ &#39;   18800     898.243612002902    -358.160428275535    -345.736968625523     33786.5539243204     417.981234539693    -628.370203423225     37433.4312929384    -1432.92890757182     39709.1409179298     1793.61337470476 \n&#39;,
+ &#39;   18900     921.401747652867     -358.01382420977     -345.27006819475     36980.0519916866     152.974980191492     1976.93678916791     35969.1099093114    -808.634053952824     39172.1426073932     1793.61337470476 \n&#39;,
+ &#39;   19000     871.436968665514     -357.21823521187    -345.165533836567     36683.5697958141     -129.69371586819     1615.72913823233     38484.1172356229    -2426.68541861946     38129.2920499831     1793.61337470476 \n&#39;,
+ &#39;   19100     834.272308479845    -357.952719746925    -346.414036673621     36014.4178901828     2035.30902312764     1791.48801487592     36909.5624918798    -268.550562430534     36893.6206646451     1793.61337470476 \n&#39;,
+ &#39;   19200     743.593303296104    -358.157945950314     -347.87342928237     36635.1876140348     -1754.0398828528    -2894.30085678302     31938.3814693013    -1095.22316800621     34240.9836551698     1793.61337470476 \n&#39;,
+ &#39;   19300     749.322093466099    -357.739331470889    -347.375580848404     35899.5719115423    -632.182500143193    -1853.09291722053     36479.6235275853      -1264.787061791     38091.3376570751     1793.61337470476 \n&#39;,
+ &#39;   19400     786.672963875134    -356.419770727717    -345.539426360263     40697.1119504175     338.885778863244    -706.384600291253     38648.5894561094    -638.883734334577     40981.9986520812     1793.61337470476 \n&#39;,
+ &#39;   19500     858.662382641883     -356.83796603974    -344.961947862502      43328.897047749      784.07916045646     658.714550843565     36880.4783174275    -2544.79806435751     35959.7817587514     1793.61337470476 \n&#39;,
+ &#39;   19600     822.395338264799    -356.757012297202    -345.382597645358     39778.3395420067     1273.78509345342     261.722041517892     39953.3099272179    -1478.39778800766     40299.5140192559     1793.61337470476 \n&#39;,
+ &#39;   19700     758.599899478218    -356.733478706303    -346.241408274924     38504.0091043052    -2152.77971577667      1146.9670902327     37805.1808443203      2544.2848201123     37215.4839170994     1793.61337470476 \n&#39;,
+ &#39;   19800     688.929181799472    -357.155608568389    -347.627142373437      36354.243453565    -909.537424246228     176.436347150598     37138.0719447076      422.85433683006     35643.5884941952     1793.61337470476 \n&#39;,
+ &#39;   19900     738.071532541178    -359.232606821321     -349.02446085644     32012.3493456594     329.058197444971     226.665636221428     31657.3294080938    -1795.39478358907     34454.2125807656     1793.61337470476 \n&#39;,
+ &#39;   20000     729.604074839261    -357.983932833097    -347.892898882922     35305.3131484828     2658.61407604072    -442.204464702034     34366.7570636079    -1961.46864608404      35224.214477881     1793.61337470476 \n&#39;,
+ &#39;Loop time of 7.44521 on 1 procs for 20000 steps with 108 atoms\n&#39;,
+ &#39;\n&#39;,
+ &#39;Performance: 232.096 ns/day, 0.103 hours/ns, 2686.292 timesteps/s\n&#39;,
+ &#39;99.3% CPU use with 1 MPI tasks x no OpenMP threads\n&#39;,
+ &#39;\n&#39;,
+ &#39;MPI task timing breakdown:\n&#39;,
+ &#39;Section |  min time  |  avg time  |  max time  |%varavg| %total\n&#39;,
+ &#39;---------------------------------------------------------------\n&#39;,
+ &#39;Pair    | 7.1814     | 7.1814     | 7.1814     |   0.0 | 96.46\n&#39;,
+ &#39;Neigh   | 0          | 0          | 0          |   0.0 |  0.00\n&#39;,
+ &#39;Comm    | 0.10862    | 0.10862    | 0.10862    |   0.0 |  1.46\n&#39;,
+ &#39;Output  | 0.097549   | 0.097549   | 0.097549   |   0.0 |  1.31\n&#39;,
+ &#39;Modify  | 0.037854   | 0.037854   | 0.037854   |   0.0 |  0.51\n&#39;,
+ &#39;Other   |            | 0.01978    |            |       |  0.27\n&#39;,
+ &#39;\n&#39;,
+ &#39;Nlocal:    108 ave 108 max 108 min\n&#39;,
+ &#39;Histogram: 1 0 0 0 0 0 0 0 0 0\n&#39;,
+ &#39;Nghost:    1580 ave 1580 max 1580 min\n&#39;,
+ &#39;Histogram: 1 0 0 0 0 0 0 0 0 0\n&#39;,
+ &#39;Neighs:    12096 ave 12096 max 12096 min\n&#39;,
+ &#39;Histogram: 1 0 0 0 0 0 0 0 0 0\n&#39;,
+ &#39;\n&#39;,
+ &#39;Total # of neighbors = 12096\n&#39;,
+ &#39;Ave neighs/atom = 112\n&#39;,
+ &#39;Neighbor list builds = 0\n&#39;,
+ &#39;Dangerous builds = 0\n&#39;,
+ &#39;Total wall time: 0:00:07\n&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="beyond-a-single-lammps-calculation">
+<h2>Beyond a single LAMMPS calculation<a class="headerlink" href="#beyond-a-single-lammps-calculation" title="Permalink to this headline">¶</a></h2>
+<p>While for individual LAMMPS calculation an integrated solution like pyiron is not required, pyiron really shines when it comes to combining multiple calculations. So in the following we iterate over a database of existing interatomic potentials and determine the lattice structure by minimizing the simulation cell.</p>
+<div class="section" id="filter-interatomic-potential-database">
+<h3>Filter Interatomic Potential Database<a class="headerlink" href="#filter-interatomic-potential-database" title="Permalink to this headline">¶</a></h3>
+<p>We start by identifying suitable interatomic potentials. By default pyiron already filters the interatomic potentials to only list those which include the required elements. Still the user can further filter the list of available potentials for a given project.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># List interatomic potentials from the NIST repository: </span>
+<span class="c1"># https://www.ctcms.nist.gov/potentials/</span>
+<span class="c1"># which include interactions for aluminium by calling view_potentials() on the LAMMPS job object</span>
+<span class="n">potential_df</span> <span class="o">=</span> <span class="n">job_md</span><span class="o">.</span><span class="n">view_potentials</span><span class="p">()</span>
+<span class="n">potential_df</span><span class="p">[</span><span class="n">potential_df</span><span class="o">.</span><span class="n">Model</span> <span class="o">==</span> <span class="s2">&quot;NISTiprpy&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Config</th>
+      <th>Filename</th>
+      <th>Model</th>
+      <th>Name</th>
+      <th>Species</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>[pair_style eam/fs \n, pair_coeff * * Al-Mg.eam.fs Al Mg\n]</td>
+      <td>[potential_LAMMPS/2009--Mendelev-M-I--Al-Mg--LAMMPS--ipr1/Al-Mg.eam.fs]</td>
+      <td>NISTiprpy</td>
+      <td>Al_Mg_Mendelev_eam</td>
+      <td>[Al, Mg]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>[pair_style eam/alloy \n, pair_coeff * * Zope-Ti-Al-2003.eam.alloy Ti Al\n]</td>
+      <td>[potential_LAMMPS/2003--Zope-R-R--Ti-Al--LAMMPS--ipr1/Zope-Ti-Al-2003.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>Zope_Ti_Al_2003_eam</td>
+      <td>[Ti, Al]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>[pair_style eam/alloy \n, pair_coeff * * NiAlH_jea.eam.alloy Ni Al H\n]</td>
+      <td>[potential_LAMMPS/1995--Angelo-J-E--Ni-Al-H--LAMMPS--ipr1/NiAlH_jea.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>Al_H_Ni_Angelo_eam</td>
+      <td>[Ni, Al, H]</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>[pair_style meam/c\n, pair_coeff * * MgAlZn.library.meam Mg Al MgAlZn.parameter.meam Mg Al Zn\n]</td>
+      <td>[potential_LAMMPS/2018--Dickel-D-E--Mg-Al-Zn--LAMMPS--ipr1/MgAlZn.parameter.meam, potential_LAMMPS/2018--Dickel-D-E--Mg-Al-Zn--LAMMPS--ipr1/MgAlZn.library.meam]</td>
+      <td>NISTiprpy</td>
+      <td>2018--Dickel-D-E--Mg-Al-Zn--LAMMPS--ipr1</td>
+      <td>[Mg, Al, Zn]</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * alpb-setfl.eam.alloy Al Pb\n]</td>
+      <td>[potential_LAMMPS/2000--Landa-A--Al-Pb--LAMMPS--ipr1/alpb-setfl.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>2000--Landa-A--Al-Pb--LAMMPS--ipr1</td>
+      <td>[Al, Pb]</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * Al_Zhou04.eam.alloy Al\n]</td>
+      <td>[potential_LAMMPS/2004--Zhou-X-W--Al--LAMMPS--ipr2/Al_Zhou04.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>2004--Zhou-X-W--Al--LAMMPS--ipr2</td>
+      <td>[Al]</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * Al03.eam.alloy Al\n]</td>
+      <td>[potential_LAMMPS/2003--Zope-R-R--Al--LAMMPS--ipr1/Al03.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>2003--Zope-R-R--Al--LAMMPS--ipr1</td>
+      <td>[Al]</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>[pair_style eam/fs\n, pair_coeff * * Al90Sm10_MendelevM_2014.eam.fs Al Sm\n]</td>
+      <td>[potential_LAMMPS/2015--Mendelev-M-I--Al-Sm--LAMMPS--ipr1/Al90Sm10_MendelevM_2014.eam.fs]</td>
+      <td>NISTiprpy</td>
+      <td>2015--Mendelev-M-I--Al-Sm--LAMMPS--ipr1</td>
+      <td>[Al, Sm]</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * mg-al-set.eam.alloy Al Mg\n]</td>
+      <td>[potential_LAMMPS/1997--Liu-X-Y--Al-Mg--LAMMPS--ipr1/mg-al-set.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>1997--Liu-X-Y--Al-Mg--LAMMPS--ipr1</td>
+      <td>[Al, Mg]</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * Al.set Al\n]</td>
+      <td>[potential_LAMMPS/2004--Zhou-X-W--Al--LAMMPS--ipr1/Al.set]</td>
+      <td>NISTiprpy</td>
+      <td>2004--Zhou-X-W--Al--LAMMPS--ipr1</td>
+      <td>[Al]</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * NiAlH_jea.eam.alloy Ni Al H\n]</td>
+      <td>[potential_LAMMPS/1995--Angelo-J-E--Ni-Al-H--LAMMPS--ipr1/NiAlH_jea.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>1995--Angelo-J-E--Ni-Al-H--LAMMPS--ipr1</td>
+      <td>[Ni, Al, H]</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>[pair_style meam/c\n, pair_coeff * * library.meam Al U AlU.meam Al U\n]</td>
+      <td>[potential_LAMMPS/2015--Pascuet-M-I--Al-U--LAMMPS--ipr2/library.meam, potential_LAMMPS/2015--Pascuet-M-I--Al-U--LAMMPS--ipr2/AlU.meam]</td>
+      <td>NISTiprpy</td>
+      <td>2015--Pascuet-M-I--Al-U--LAMMPS--ipr2</td>
+      <td>[Al, U]</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * al-cu-set.eam.alloy Al Cu\n]</td>
+      <td>[potential_LAMMPS/1999--Liu-X-Y--Al-Cu--LAMMPS--ipr1/al-cu-set.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>1999--Liu-X-Y--Al-Cu--LAMMPS--ipr1</td>
+      <td>[Al, Cu]</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>[pair_style meam/c\n, pair_coeff * * library-Al.meam Al Al.meam Al\n]</td>
+      <td>[potential_LAMMPS/2015--Pascuet-M-I--Al--LAMMPS--ipr1/library-Al.meam, potential_LAMMPS/2015--Pascuet-M-I--Al--LAMMPS--ipr1/Al.meam]</td>
+      <td>NISTiprpy</td>
+      <td>2015--Pascuet-M-I--Al--LAMMPS--ipr1</td>
+      <td>[Al]</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * almg.liu.eam.alloy Al Mg\n]</td>
+      <td>[potential_LAMMPS/1998--Liu-X-Y--Al-Mg--LAMMPS--ipr1/almg.liu.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>1998--Liu-X-Y--Al-Mg--LAMMPS--ipr1</td>
+      <td>[Al, Mg]</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * NiAlCo_updated.eam.alloy Ni Al Co\n]</td>
+      <td>[potential_LAMMPS/2015--Purja-Pun-G-P--Ni-Al-Co--LAMMPS--ipr2/NiAlCo_updated.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>2015--Purja-Pun-G-P--Ni-Al-Co--LAMMPS--ipr2</td>
+      <td>[Ni, Al, Co]</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>[pair_style eam/fs\n, pair_coeff * * Al-Mg.eam.fs Al Mg\n]</td>
+      <td>[potential_LAMMPS/2009--Mendelev-M-I--Al-Mg--LAMMPS--ipr1/Al-Mg.eam.fs]</td>
+      <td>NISTiprpy</td>
+      <td>2009--Mendelev-M-I--Al-Mg--LAMMPS--ipr1</td>
+      <td>[Al, Mg]</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * NiAl02.eam.alloy Ni Al\n]</td>
+      <td>[potential_LAMMPS/2002--Mishin-Y--Ni-Al--LAMMPS--ipr1/NiAl02.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>2002--Mishin-Y--Ni-Al--LAMMPS--ipr1</td>
+      <td>[Ni, Al]</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * AlMnPd_Schopf_2012.lammps.EAM_CORRECT Al Mn Pd\n]</td>
+      <td>[potential_LAMMPS/2012--Schopf-D--Al-Mn-Pd--LAMMPS--ipr1/AlMnPd_Schopf_2012.lammps.EAM_CORRECT]</td>
+      <td>NISTiprpy</td>
+      <td>2012--Schopf-D--Al-Mn-Pd--LAMMPS--ipr1</td>
+      <td>[Al, Mn, Pd]</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>[pair_style eam/fs\n, pair_coeff * * MDSL.eam.fs Al\n]</td>
+      <td>[potential_LAMMPS/2000--Sturgeon-J-B--Al--LAMMPS--ipr1/MDSL.eam.fs]</td>
+      <td>NISTiprpy</td>
+      <td>2000--Sturgeon-J-B--Al--LAMMPS--ipr1</td>
+      <td>[Al]</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * Zope-Ti-Al-2003.eam.alloy Ti Al\n]</td>
+      <td>[potential_LAMMPS/2003--Zope-R-R--Ti-Al--LAMMPS--ipr1/Zope-Ti-Al-2003.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>2003--Zope-R-R--Ti-Al--LAMMPS--ipr1</td>
+      <td>[Ti, Al]</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * Al-2009.eam.alloy Al\n]</td>
+      <td>[potential_LAMMPS/2009--Zhakhovskii-V-V--Al--LAMMPS--ipr1/Al-2009.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>2009--Zhakhovskii-V-V--Al--LAMMPS--ipr1</td>
+      <td>[Al]</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * Mishin-Ni-Al-Co-2013.eam.alloy Ni Al Co\n]</td>
+      <td>[potential_LAMMPS/2015--Purja-Pun-G-P--Ni-Al-Co--LAMMPS--ipr1/Mishin-Ni-Al-Co-2013.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>2015--Purja-Pun-G-P--Ni-Al-Co--LAMMPS--ipr1</td>
+      <td>[Ni, Al, Co]</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * Farkas_Nb-Ti-Al_1996.eam.alloy Nb Ti Al\n]</td>
+      <td>[potential_LAMMPS/1996--Farkas-D--Nb-Ti-Al--LAMMPS--ipr1/Farkas_Nb-Ti-Al_1996.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>1996--Farkas-D--Nb-Ti-Al--LAMMPS--ipr1</td>
+      <td>[Nb, Ti, Al]</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * Mishin-Al-Co-2013.eam.alloy Al Co\n]</td>
+      <td>[potential_LAMMPS/2015--Purja-Pun-G-P--Al-Co--LAMMPS--ipr1/Mishin-Al-Co-2013.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>2015--Purja-Pun-G-P--Al-Co--LAMMPS--ipr1</td>
+      <td>[Al, Co]</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * Mishin_updated-Al-Co-2013.eam.alloy Al Co\n]</td>
+      <td>[potential_LAMMPS/2015--Purja-Pun-G-P--Al-Co--LAMMPS--ipr2/Mishin_updated-Al-Co-2013.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>2015--Purja-Pun-G-P--Al-Co--LAMMPS--ipr2</td>
+      <td>[Al, Co]</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>[pair_style meam/c\n, pair_coeff * * library.meam Al U AlU.meam Al U\n]</td>
+      <td>[potential_LAMMPS/2015--Pascuet-M-I--Al-U--LAMMPS--ipr1/library.meam, potential_LAMMPS/2015--Pascuet-M-I--Al-U--LAMMPS--ipr1/AlU.meam]</td>
+      <td>NISTiprpy</td>
+      <td>2015--Pascuet-M-I--Al-U--LAMMPS--ipr1</td>
+      <td>[Al, U]</td>
+    </tr>
+    <tr>
+      <th>170</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * Al_wkg_MSMSE_2009.set Al\n]</td>
+      <td>[potential_LAMMPS/2010--Winey-J-M--Al--LAMMPS--ipr1/Al_wkg_MSMSE_2009.set]</td>
+      <td>NISTiprpy</td>
+      <td>2010--Winey-J-M--Al--LAMMPS--ipr1</td>
+      <td>[Al]</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>[pair_style eam/fs\n, pair_coeff * * Al-Fe.eam.fs Al Fe\n]</td>
+      <td>[potential_LAMMPS/2005--Mendelev-M-I--Al-Fe--LAMMPS--ipr1/Al-Fe.eam.fs]</td>
+      <td>NISTiprpy</td>
+      <td>2005--Mendelev-M-I--Al-Fe--LAMMPS--ipr1</td>
+      <td>[Al, Fe]</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * Al99.eam.alloy Al\n]</td>
+      <td>[potential_LAMMPS/1999--Mishin-Y--Al--LAMMPS--ipr1/Al99.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>1999--Mishin-Y--Al--LAMMPS--ipr1</td>
+      <td>[Al]</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>[pair_style eam/fs\n, pair_coeff * * Al1.eam.fs Al\n]</td>
+      <td>[potential_LAMMPS/2008--Mendelev-M-I--Al--LAMMPS--ipr1/Al1.eam.fs]</td>
+      <td>NISTiprpy</td>
+      <td>2008--Mendelev-M-I--Al--LAMMPS--ipr1</td>
+      <td>[Al]</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * Mishin-Ni-Al-2009.eam.alloy Ni Al\n]</td>
+      <td>[potential_LAMMPS/2009--Purja-Pun-G-P--Ni-Al--LAMMPS--ipr1/Mishin-Ni-Al-2009.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>2009--Purja-Pun-G-P--Ni-Al--LAMMPS--ipr1</td>
+      <td>[Ni, Al]</td>
+    </tr>
+    <tr>
+      <th>202</th>
+      <td>[pair_style meam/c\n, pair_coeff * * Jelinek_2012_meamf Al Si Mg Cu Fe Jelinek_2012_meam.alsimgcufe Al Si Mg Cu Fe\n]</td>
+      <td>[potential_LAMMPS/2012--Jelinek-B--Al-Si-Mg-Cu-Fe--LAMMPS--ipr1/Jelinek_2012_meamf, potential_LAMMPS/2012--Jelinek-B--Al-Si-Mg-Cu-Fe--LAMMPS--ipr1/Jelinek_2012_meam.alsimgcufe]</td>
+      <td>NISTiprpy</td>
+      <td>2012--Jelinek-B--Al-Si-Mg-Cu-Fe--LAMMPS--ipr1</td>
+      <td>[Al, Si, Mg, Cu, Fe]</td>
+    </tr>
+    <tr>
+      <th>212</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * NiAl.eam.alloy Ni Al\n]</td>
+      <td>[potential_LAMMPS/2004--Mishin-Y--Ni-Al--LAMMPS--ipr1/NiAl.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>2004--Mishin-Y--Ni-Al--LAMMPS--ipr1</td>
+      <td>[Ni, Al]</td>
+    </tr>
+    <tr>
+      <th>216</th>
+      <td>[pair_style eam/alloy\n, pair_coeff * * Al-LEA.eam.alloy Al\n]</td>
+      <td>[potential_LAMMPS/2004--Liu-X-Y--Al--LAMMPS--ipr1/Al-LEA.eam.alloy]</td>
+      <td>NISTiprpy</td>
+      <td>2004--Liu-X-Y--Al--LAMMPS--ipr1</td>
+      <td>[Al]</td>
+    </tr>
+    <tr>
+      <th>243</th>
+      <td>[pair_style bop\n, pair_coeff * * AlCu.bop.table Al Cu\n]</td>
+      <td>[potential_LAMMPS/2016--Zhou-X-W--Al-Cu--LAMMPS--ipr1/AlCu.bop.table]</td>
+      <td>NISTiprpy</td>
+      <td>2016--Zhou-X-W--Al-Cu--LAMMPS--ipr1</td>
+      <td>[Al, Cu]</td>
+    </tr>
+    <tr>
+      <th>254</th>
+      <td>[pair_style agni\n, pair_coeff * * Al_jpc.agni Al\n]</td>
+      <td>[potential_LAMMPS/2017--Botu-V--Al--LAMMPS--ipr1/Al_jpc.agni]</td>
+      <td>NISTiprpy</td>
+      <td>2017--Botu-V--Al--LAMMPS--ipr1</td>
+      <td>[Al]</td>
+    </tr>
+    <tr>
+      <th>256</th>
+      <td>[pair_style adp\n, pair_coeff * * AlCu.adp Al Cu\n]</td>
+      <td>[potential_LAMMPS/2011--Apostol-F--Al-Cu--LAMMPS--ipr1/AlCu.adp]</td>
+      <td>NISTiprpy</td>
+      <td>2011--Apostol-F--Al-Cu--LAMMPS--ipr1</td>
+      <td>[Al, Cu]</td>
+    </tr>
+    <tr>
+      <th>258</th>
+      <td>[pair_style agni\n, pair_coeff * * Al_prb.agni Al\n]</td>
+      <td>[potential_LAMMPS/2015--Botu-V--Al--LAMMPS--ipr1/Al_prb.agni]</td>
+      <td>NISTiprpy</td>
+      <td>2015--Botu-V--Al--LAMMPS--ipr1</td>
+      <td>[Al]</td>
+    </tr>
+    <tr>
+      <th>266</th>
+      <td>[pair_style comb3 polar_off\n, pair_coeff * * ffield.comb3.NiAlO Al\n]</td>
+      <td>[potential_LAMMPS/2015--Choudhary-K--Al--LAMMPS--ipr1/ffield.comb3.NiAlO]</td>
+      <td>NISTiprpy</td>
+      <td>2015--Choudhary-K--Al--LAMMPS--ipr1</td>
+      <td>[Al]</td>
+    </tr>
+    <tr>
+      <th>267</th>
+      <td>[pair_style bop\n, pair_coeff * * AlCuH_Dec3.t Al Cu H\n]</td>
+      <td>[potential_LAMMPS/2018--Zhou-X-W--Al-Cu-H--LAMMPS--ipr1/AlCuH_Dec3.t]</td>
+      <td>NISTiprpy</td>
+      <td>2018--Zhou-X-W--Al-Cu-H--LAMMPS--ipr1</td>
+      <td>[Al, Cu, H]</td>
+    </tr>
+    <tr>
+      <th>273</th>
+      <td>[pair_style comb3 polar_off\n, pair_coeff * * ffield.comb3.NiAlO Al Ni O\n]</td>
+      <td>[potential_LAMMPS/2015--Kumar-A--Al-Ni-O--LAMMPS--ipr1/ffield.comb3.NiAlO]</td>
+      <td>NISTiprpy</td>
+      <td>2015--Kumar-A--Al-Ni-O--LAMMPS--ipr1</td>
+      <td>[Al, Ni, O]</td>
+    </tr>
+    <tr>
+      <th>289</th>
+      <td>[pair_style comb3 polar_off\n, pair_coeff * * ffield.comb3.NiAlO Al Ni\n]</td>
+      <td>[potential_LAMMPS/2015--Kumar-A--Al-Ni--LAMMPS--ipr1/ffield.comb3.NiAlO]</td>
+      <td>NISTiprpy</td>
+      <td>2015--Kumar-A--Al-Ni--LAMMPS--ipr1</td>
+      <td>[Al, Ni]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="choose-an-interatmoic-potential">
+<h3>Choose an interatmoic potential<a class="headerlink" href="#choose-an-interatmoic-potential" title="Permalink to this headline">¶</a></h3>
+<p>Interatomic potentials can be fitted for specific applications, therefore before selecting a given interatomic potential it is recommended to test basic properties of the potential. In this example we calculate the 0K equilibrium lattice constant by optimizing the atmoic supercell.</p>
+<div class="section" id="job-template">
+<h4>Job Template<a class="headerlink" href="#job-template" title="Permalink to this headline">¶</a></h4>
+<p>To develop a scalable simulation protocol, we first define a job template and then apply this template to the available interatomic potentials.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To compare different potentials we start by creating a template job named lmp_template</span>
+<span class="n">job_template</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span>
+    <span class="n">job_type</span><span class="o">=</span><span class="n">pr</span><span class="o">.</span><span class="n">job_type</span><span class="o">.</span><span class="n">Lammps</span><span class="p">,</span> 
+    <span class="n">job_name</span><span class="o">=</span><span class="s2">&quot;lmp_template&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We assign a cubic fcc aluminium supercell </span>
+<span class="n">job_template</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create_ase_bulk</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable volume minimization by specifying the pressure as zero</span>
+<span class="n">job_template</span><span class="o">.</span><span class="n">calc_minimize</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="iterate-over-interatomic-potentials">
+<h4>Iterate over interatomic potentials<a class="headerlink" href="#iterate-over-interatomic-potentials" title="Permalink to this headline">¶</a></h4>
+<p>After the template is constructed we can iterate over the database of existing interatomic potentials. In this example we limit the total umber of potentials to three to accelerate the calculations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select the first three potentials from the NIST database</span>
+<span class="n">potential_df</span><span class="p">[</span><span class="n">potential_df</span><span class="o">.</span><span class="n">Model</span> <span class="o">==</span> <span class="s2">&quot;NISTiprpy&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Name</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Al_Mg_Mendelev_eam&#39;, &#39;Zope_Ti_Al_2003_eam&#39;, &#39;Al_H_Ni_Angelo_eam&#39;],
+      dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We then iterate over the first three potentials of the NIST database</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">potential_df</span><span class="p">[</span><span class="n">potential_df</span><span class="o">.</span><span class="n">Model</span> <span class="o">==</span> <span class="s2">&quot;NISTiprpy&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Name</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="c1"># create a copy for each of the template job for each of the potentials</span>
+    <span class="c1"># without creating a new database entry by setting the new_database_entry </span>
+    <span class="c1"># parameter to False </span>
+    <span class="n">job_minimize</span> <span class="o">=</span> <span class="n">job_template</span><span class="o">.</span><span class="n">copy_to</span><span class="p">(</span>
+        <span class="n">new_job_name</span><span class="o">=</span><span class="s2">&quot;lmp_&quot;</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">),</span> 
+        <span class="n">new_database_entry</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># We then assign the potential </span>
+    <span class="n">job_minimize</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="n">p</span>
+    
+    <span class="c1"># Execute the calculation </span>
+    <span class="n">job_minimize</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">delete_existing_job</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job lmp_Al_Mg_Mendelev_eam was saved and received the ID: 76
+The job lmp_Zope_Ti_Al_2003_eam was saved and received the ID: 77
+The job lmp_Al_H_Ni_Angelo_eam was saved and received the ID: 78
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># list all calculations in the current project using the project job table</span>
+<span class="n">pr</span><span class="o">.</span><span class="n">job_table</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>status</th>
+      <th>chemicalformula</th>
+      <th>job</th>
+      <th>subjob</th>
+      <th>projectpath</th>
+      <th>project</th>
+      <th>timestart</th>
+      <th>timestop</th>
+      <th>totalcputime</th>
+      <th>computer</th>
+      <th>hamilton</th>
+      <th>hamversion</th>
+      <th>parentid</th>
+      <th>masterid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>75</td>
+      <td>finished</td>
+      <td>Al108</td>
+      <td>lmp</td>
+      <td>/lmp</td>
+      <td>/home/jovyan/</td>
+      <td>again/simulations/</td>
+      <td>2020-11-09 23:36:41.970727</td>
+      <td>2020-11-09 23:36:52.541898</td>
+      <td>10.0</td>
+      <td>pyiron@jupyter-jan#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>76</td>
+      <td>finished</td>
+      <td>Al4</td>
+      <td>lmp_Al_Mg_Mendelev_eam</td>
+      <td>/lmp_Al_Mg_Mendelev_eam</td>
+      <td>/home/jovyan/</td>
+      <td>again/simulations/</td>
+      <td>2020-11-09 23:37:00.285287</td>
+      <td>2020-11-09 23:37:02.967963</td>
+      <td>2.0</td>
+      <td>pyiron@jupyter-jan#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>77</td>
+      <td>finished</td>
+      <td>Al4</td>
+      <td>lmp_Zope_Ti_Al_2003_eam</td>
+      <td>/lmp_Zope_Ti_Al_2003_eam</td>
+      <td>/home/jovyan/</td>
+      <td>again/simulations/</td>
+      <td>2020-11-09 23:37:08.665310</td>
+      <td>2020-11-09 23:37:10.641839</td>
+      <td>1.0</td>
+      <td>pyiron@jupyter-jan#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>78</td>
+      <td>finished</td>
+      <td>Al4</td>
+      <td>lmp_Al_H_Ni_Angelo_eam</td>
+      <td>/lmp_Al_H_Ni_Angelo_eam</td>
+      <td>/home/jovyan/</td>
+      <td>again/simulations/</td>
+      <td>2020-11-09 23:37:15.027790</td>
+      <td>2020-11-09 23:37:16.947035</td>
+      <td>1.0</td>
+      <td>pyiron@jupyter-jan#1</td>
+      <td>Lammps</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="validate-calculations">
+<h4>Validate calculations<a class="headerlink" href="#validate-calculations" title="Permalink to this headline">¶</a></h4>
+<p>We validate the simulation results by confirming the calculations have been executed successfully. In this example one calculation failed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We use the pyiron job table of the project object </span>
+<span class="c1"># to validate all jobs finished successfully with </span>
+<span class="c1"># the status &quot;finished&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">job_table</span><span class="p">()</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;finished&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="analyse-results">
+<h4>Analyse results<a class="headerlink" href="#analyse-results" title="Permalink to this headline">¶</a></h4>
+<p>Iterate over the successful calculation and compare the calculated lattice constants.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load a job object by the job name in the column job </span>
+<span class="c1"># of the pyiron job table </span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">job_minimize</span><span class="o">.</span><span class="n">job_name</span><span class="p">)</span>
+
+<span class="n">job_minimize</span><span class="o">.</span><span class="n">job_name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;lmp_Al_H_Ni_Angelo_eam&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the final lattice constant </span>
+<span class="n">job</span><span class="p">[</span><span class="s2">&quot;output/generic/cells&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.050000068034437
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We iterate over the jobs in a the current project </span>
+<span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">pr</span><span class="o">.</span><span class="n">iter_jobs</span><span class="p">():</span>
+    <span class="c1"># Filter job using only those who have the job status </span>
+    <span class="c1"># finished and &quot;lmp_&quot; in the job_name</span>
+    <span class="k">if</span> <span class="n">job</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;finished&quot;</span> <span class="ow">and</span> <span class="s2">&quot;lmp_&quot;</span> <span class="ow">in</span> <span class="n">job</span><span class="o">.</span><span class="n">job_name</span><span class="p">:</span> 
+        <span class="c1"># Print the job name and the lattice constant </span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">job_name</span><span class="p">,</span> <span class="n">job</span><span class="p">[</span><span class="s2">&quot;output/generic/cells&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lmp_Al_Mg_Mendelev_eam 4.045270541092276
+lmp_Zope_Ti_Al_2003_eam 4.049999419544279
+lmp_Al_H_Ni_Angelo_eam 4.050000068034437
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pyiron-table">
+<h4>pyiron table<a class="headerlink" href="#pyiron-table" title="Permalink to this headline">¶</a></h4>
+<p>To automate the collection of data from individual calculations pyiron includes the pyiron table object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a pyiron table object</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">create_table</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Implement a filter function, which returns true </span>
+<span class="c1"># for finished jobs and jobs with &quot;lmp_&quot; in the job_name</span>
+<span class="k">def</span> <span class="nf">filter_jobs</span><span class="p">(</span><span class="n">job</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;finished&quot;</span> <span class="ow">and</span> <span class="s2">&quot;lmp_&quot;</span> <span class="ow">in</span> <span class="n">job</span><span class="o">.</span><span class="n">job_name</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Implement an analysis functions, which takes a job object</span>
+<span class="c1"># as an input and returns the lattice constant. Based on the</span>
+<span class="c1"># previous cell above to print the lattice constant.</span>
+<span class="k">def</span> <span class="nf">get_lattice_constant</span><span class="p">(</span><span class="n">job</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="n">job</span><span class="p">[</span><span class="s2">&quot;output/generic/cells&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Implement a second analysis functions, which takes a </span>
+<span class="c1"># job object as an input and returns the job_name.</span>
+<span class="k">def</span> <span class="nf">get_job_name</span><span class="p">(</span><span class="n">job</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">job</span><span class="o">.</span><span class="n">job_name</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assigne the filter functions and the analysis functions </span>
+<span class="c1"># to the pyiron table object</span>
+<span class="n">table</span><span class="o">.</span><span class="n">filter_function</span> <span class="o">=</span> <span class="n">filter_jobs</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;job_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_job_name</span>
+<span class="n">table</span><span class="o">.</span><span class="n">add</span><span class="p">[</span><span class="s2">&quot;lattice_constant&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_lattice_constant</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Execute the pyiron table just like a pyiron job object</span>
+<span class="n">table</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 5/5 [00:00&lt;00:00, 373.15it/s]
+  0%|          | 0/3 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The job table was saved and received the ID: 79
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:00&lt;00:00, 61.96it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Return a pandas DataFrame with the collected results </span>
+<span class="n">table</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>job_id</th>
+      <th>job_name</th>
+      <th>lattice_constant</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>76</td>
+      <td>lmp_Al_Mg_Mendelev_eam</td>
+      <td>4.045271</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>77</td>
+      <td>lmp_Zope_Ti_Al_2003_eam</td>
+      <td>4.049999</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>78</td>
+      <td>lmp_Al_H_Ni_Angelo_eam</td>
+      <td>4.050000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this section you learned:</p>
+<ul class="simple">
+<li><p>to execute LAMMPS calculation with generic and code-specifc input,</p></li>
+<li><p>to iterate over multiple interatomic potentials</p></li>
+<li><p>and aggregate the data in a pyiron table object.
+This technique was afterwards used to calculate the lattice constant of multiple interatomic potentials.</p></li>
+</ul>
+<p>Additional exercises:</p>
+<ul class="simple">
+<li><p>Calculate the lattice constant at a finite temperature of 500K by averaging the lattice constant over 1000 time steps.</p></li>
+<li><p>Calculate the thermal expansion for multiple potentials.</p></li>
+<li><p>How does an interstitial element change the thermal expansion? How does a vacancy change the thermal expansion?</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By pyiron<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
