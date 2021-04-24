@@ -1,2 +1,2 @@
-pyiron_atomistics==0.2.9
+pyiron_atomistics==0.2.10
 nglview==3.0.1
