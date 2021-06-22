@@ -3,7 +3,7 @@ channels:
 dependencies:
 - pyiron_atomistics =0.2.16
 - lammps =2021.02.10
-- nglview =3.0.1
+- nglview =3.0.3
 - sqsgenerator =0.0.5
 - sphinxdft =2.7.0
 - papermill
