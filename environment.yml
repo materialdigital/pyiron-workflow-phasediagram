@@ -1,9 +1,9 @@
 channels:
 - conda-forge
 dependencies:
-- pyiron_atomistics =0.2.28
-- lammps =2021.02.10
+- pyiron_atomistics =0.2.44
+- lammps =2021.09.29
 - nglview =3.0.3
-- sqsgenerator =0.0.5
-- sphinxdft =2.7.0
+- sqsgenerator =0.1
+- sphinxdft =3.0.3
 - papermill
